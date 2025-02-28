@@ -31,13 +31,9 @@ export const generateReport = async (req, res) => {
                 cCategorie: company.cCategorie
             });
         });
-
         console.log("Archivo Excel generado correctamente");
 
-        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        res.setHeader('Content-Disposition', 'attachment; filename=reporte_empresas.xlsx');
-
-        await workbook.xlsx.write(res);
+        await workbook.xlsx.writeFile('companies.xlsx') 
         res.end();
     } catch (e) {
         console.error("Error en generateReport:", e); 
