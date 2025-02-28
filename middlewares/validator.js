@@ -5,16 +5,19 @@ import {existAddress, existName, existEmail} from "../utils/db.validator.js"
 export const addCompanyValidator = [
     body('name', 'Name cannot be empty')
         .notEmpty()
+        .toLowerCase()
         .custom(existName),
     body('email', 'Email cannot be empty')
         .notEmpty()
         .isEmail()
+        .toLowerCase()
         .custom(existEmail),
     body('phone', 'Phone cannot be empty')
         .notEmpty()
         .isMobilePhone(),
     body('address', 'Address cannot be empty')
     .notEmpty()
+    .toLowerCase()
     .custom(existAddress),
     body('cCategorie','Address cannot be empty').notEmpty().toLowerCase(),
     validateErrors
@@ -27,4 +30,4 @@ export const updateCompanyValidator = [
     body('address', 'Address cannot be empty').optional().notEmpty().custom(existAddress).toLowerCase(),
     body('cCategorie','Address cannot be empty').optional().notEmpty().toUpperCase(),
     validateErrorsWithoutFiles
-]
+]   

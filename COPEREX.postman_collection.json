@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "eb5192d7-a463-4220-bf18-b9b929ee4d6b",
+		"name": "COPEREX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37956971"
+	},
+	"item": [
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "addCompany",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:2636/addCompany",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"addCompany"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCompany",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/getCompanies?sort=name_z",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"getCompanies"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "name_z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAdmin",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Impulso Mobiliario de oficina S.A",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/updateCompany/67c0eead24a82e91b04e7b1f",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"updateCompany",
+								"67c0eead24a82e91b04e7b1f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "getReport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/getReport",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"getReport"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let data = pm.response.json();\r",
+							"postman.setGlobalVariable('token', data.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "dmedina-2023045",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Petungoat123..$$",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:2636/login",
+					"host": [
+						"localhost"
+					],
+					"port": "2636",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
