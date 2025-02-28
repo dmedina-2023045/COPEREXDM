@@ -34,6 +34,7 @@ export const getCompanies = async (req, res) => {
         const companies = await Company.find(filters).sort(sortOptions)
         return res.send({success: true, message:'Companies found', companies})
     } catch (e) {
+        console.error('General error', e)
         res.status(500).send({message: 'General error',e })
     }
 };

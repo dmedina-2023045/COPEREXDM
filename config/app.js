@@ -4,6 +4,7 @@ import helmet from 'helmet'
 import cors from 'cors' 
 import authRoutes from '../src/auth/auth.routes.js'
 import companyRoutes from '../src/company/company.routes.js'
+import reportRoutes from '../src/report/report.routes.js'
 
 import {limiter} from '../middlewares/rate.limits.js'
 
@@ -19,6 +20,7 @@ const configs = (app)=>{
 const routes = (app)=>{ 
     app.use(authRoutes)
     app.use(companyRoutes)
+    app.use(reportRoutes)
 
 }
 
